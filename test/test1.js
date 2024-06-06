@@ -2,10 +2,15 @@ const { By, Key, Builder } = require("selenium-webdriver");
 const chrome = require("selenium-webdriver/chrome");
 
 async function test_case() {
+    let options = new chrome.Options();
+    options.addArguments('headless');
+    options.addArguments('disable-gpu');
+    options.setChromeBinaryPath('/usr/bin/google-chrome');
+    
     let driver = await new Builder().forBrowser("chrome").build();
 
     try {
-        await driver.get("https://devops-proj-staging.web.app/");
+        await driver.get("https://devops2-lab2-1-password-prod.web.app/");
         await driver.findElement(By.id('generate')).click();
 
         let resultElement = await driver.findElement(By.id('result'));
@@ -23,6 +28,7 @@ async function test_case() {
         setTimeout(async function () {
             await driver.quit();
         }, 10000);
+        
     }
 }
 
