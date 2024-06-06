@@ -21,14 +21,13 @@ pipeline {
             echo 'Staging'
              sh 'firebase deploy -P devops2-lab2-1-password-stag --token "$FIREBASE_DEPLOY_TOKEN"'
         }
-        }
     }
+    
     stage('Production'){
         steps{
             echo 'Production'
              sh 'firebase deploy -P devops2-lab2-1-password-prod --token "$FIREBASE_DEPLOY_TOKEN"'
         }
-        }
+      }
     }
   }
-}
