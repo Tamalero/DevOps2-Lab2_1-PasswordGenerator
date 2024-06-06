@@ -7,21 +7,27 @@ pipeline {
     stage('Building'){
         steps{
             echo 'Building'
+            echo 'Currently running firebase alreday installed in the OS'
         }
     }
     stage('Testing'){
         steps{
             echo 'Testing'
+            sh 'firebase deploy -P devops2-lab2-1-password --token "$FIREBASE_DEPLOY_TOKEN"'
         }
     }
     stage('Staging'){
         steps{
             echo 'Staging'
+             sh 'firebase deploy -P devops2-lab2-1-password-stag --token "$FIREBASE_DEPLOY_TOKEN"'
+        }
         }
     }
     stage('Production'){
         steps{
             echo 'Production'
+             sh 'firebase deploy -P devops2-lab2-1-password-prod --token "$FIREBASE_DEPLOY_TOKEN"'
+        }
         }
     }
   }
